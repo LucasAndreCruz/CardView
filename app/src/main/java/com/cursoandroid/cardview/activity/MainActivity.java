@@ -8,10 +8,14 @@ import android.os.Bundle;
 
 import com.cursoandroid.cardview.R;
 import com.cursoandroid.cardview.adapter.PostagemAdapter;
+import com.cursoandroid.cardview.model.Postagem;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerPostagem;
+    private List<Postagem> postagens;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,11 +30,25 @@ public class MainActivity extends AppCompatActivity {
         recyclerPostagem.setLayoutManager(layoutManager);
 
         // Define adapter
-
-        PostagemAdapter adapter = new PostagemAdapter();
-
+        this.prepararPostagens();
+        PostagemAdapter adapter = new PostagemAdapter(postagens);
         recyclerPostagem.setAdapter(adapter);
 
-
     }
+
+    public void prepararPostagens(){
+        Postagem p = new Postagem("Lucas André", "#tbt Viagem Legal", R.drawable.imagem1);
+        this.postagens.add(p);
+
+        p = new Postagem("Hotel JM", "Viaje, aproveite nossos descontos", R.drawable.imagem2);
+        this.postagens.add(p);
+
+        p = new Postagem("Maria Luiza", "#Paris!!", R.drawable.imagem3);
+        this.postagens.add(p);
+
+        p = new Postagem("Marcos Paulo", "Que foto linda!", R.drawable.imagem4);
+        this.postagens.add(p);
+    }
+
+
 }
